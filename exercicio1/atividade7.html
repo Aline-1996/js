@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Velocidade Média</title>
+</head>
+<body>
+    <h1>Calculadora de Velocidade Média</h1>
+    <p>Clique no botão para digitar a distância (km) e o tempo (h) e calcular a velocidade média (km/h).</p>
+
+    <button onclick="calcularVelocidadeMedia()">Calcular Velocidade Média</button>
+    
+    <script>
+        function calcularVelocidadeMedia() {
+            let distancia_string = prompt("Digite a DISTÂNCIA percorrida (em km):");
+
+            let tempo_string = prompt("Digite o TEMPO gasto (em horas):");
+
+            let distancia = Number(distancia_string);
+            let tempo = Number(tempo_string);
+
+            if (isNaN(distancia) || isNaN(tempo) || tempo <= 0) {
+                alert("Entrada inválida. A distância e o tempo devem ser números, e o tempo deve ser maior que zero.");
+                return;
+            }
+            let velocidade = distancia / tempo;
+
+            alert(`
+                Distância: ${distancia} km
+                Tempo: ${tempo} h
+                A Velocidade Média é: ${velocidade.toFixed(2)} km/h
+            `);
+        }
+    </script>
+</body>
+</html>

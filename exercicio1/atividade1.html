@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma de Dois Números</title>
+</head>
+<body>
+    <h1>Calculadora de Soma Simples</h1>
+    <p>Clique no botão para inserir os números e ver o resultado da soma.</p>
+   
+    <button onclick="somarDoisNumeros()">Calcular soma</button>
+
+    <script>
+        function somarDoisNumeros() {
+            
+            let num1_string = prompt("Digite o primeiro número:");
+
+           
+            let num2_string = prompt("Digite o segundo número:");
+
+            
+            let numero1 = Number(num1_string);
+            let numero2 = Number(num2_string);
+            
+            let soma = numero1 + numero2;
+
+            
+            alert(`A soma de ${num1_string} e ${num2_string} é: ${soma}`);
+        }
+        
+    </script>
+
+</body>
+</html>

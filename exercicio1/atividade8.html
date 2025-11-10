@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversão de Moeda</title>
+</head>
+<body>
+    <h1>Conversor de Dólar para Real</h1>
+    <p>Clique no botão para digitar o valor em Dólar e a Cotação atual (R$).</p>
+
+    <button onclick="converterMoeda()">Converter</button>
+    
+    <script>
+        function converterMoeda() {
+            let dolar_string = prompt("Digite o valor em DÓLAR ($):");
+
+            let cotacao_string = prompt("Digite o valor da COTAÇÃO do Dólar em Reais (R$):");
+
+            let valorDolar = Number(dolar_string);
+            let cotacao = Number(cotacao_string);
+        
+            if (isNaN(valorDolar) || isNaN(cotacao) || cotacao <= 0) {
+                alert("Entradas inválidas. Certifique-se de que os valores são numéricos e a cotação é positiva.");
+                return;
+            }
+
+            let valorEmReais = valorDolar * cotacao;
+
+            alert(`
+                Valor em Dólar: $${valorDolar.toFixed(2)}
+                Cotação Atual: R$${cotacao.toFixed(2)}
+                O valor convertido para Reais é: R$${valorEmReais.toFixed(2)}
+            `);
+        }
+    </script>
+</body>
+</html>

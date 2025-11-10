@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Volume do Cilindro</title>
+</head>
+<body>
+    <h1>Cálculo do Volume do Cilindro</h1>
+    <p>Clique no botão para digitar o raio da base e a altura do cilindro.</p>
+
+    <button onclick="calcularVolumeCilindro()">Calcular Volume</button>
+    
+    <script>
+        function calcularVolumeCilindro() {
+            let raio_string = prompt("Digite o RAIO da base do cilindro:");
+
+            let altura_string = prompt("Digite a ALTURA do cilindro:");
+
+            let raio = Number(raio_string);
+            let altura = Number(altura_string);
+        
+            if (isNaN(raio) || isNaN(altura) || raio <= 0 || altura <= 0) {
+                alert("Entradas inválidas. O raio e a altura devem ser números positivos.");
+                return;
+            }
+            let volume = Math.PI * (raio ** 2) * altura;
+
+            alert(`
+                Raio: ${raio}
+                Altura: ${altura}
+                O Volume do Cilindro é: ${volume.toFixed(2)} unidades cúbicas
+            `);
+        }
+    </script>
+</body>
+</html>

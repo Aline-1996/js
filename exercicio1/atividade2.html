@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Diferença</title>
+</head>
+<body>
+    <h1>Calculadora de Diferença Simples</h1>
+    <p>Clique no botão e digite dois números. O resultado será o Primeiro Número menos o Segundo Número.</p>
+
+    <button onclick="calcularDiferenca()">Calcular Diferença</button>
+    
+    <script>
+        function calcularDiferenca() {
+          
+            let num1_string = prompt("Digite o Primeiro número:");
+            
+            
+            let num2_string = prompt("Digite o Segundo número:");
+
+           
+            let numero1 = Number(num1_string);
+           
+            let numero2 = Number(num2_string);
+
+           
+            let diferenca = numero1 - numero2;
+
+            alert(`A diferença entre ${num1_string} e ${num2_string} é: ${diferenca}`);
+        }
+    </script>
+</body>
+</html>

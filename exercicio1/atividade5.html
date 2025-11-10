@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Divisão de Dois Números</title>
+</head>
+<body>
+    <h1>Calculadora de Divisão Simples</h1>
+    <p>Clique no botão para digitar dois números e ver o quociente (Primeiro Número / Segundo Número).</p>
+
+    <button onclick="calcularDivisao()">Calcular Divisão</button>
+    
+    <script>
+        function calcularDivisao() {
+            let num1_string = prompt("Digite o DIVIDENDO (o número a ser dividido):");
+
+            let num2_string = prompt("Digite o DIVISOR (o número que irá dividir):");
+
+            let numero1 = Number(num1_string);
+            let numero2 = Number(num2_string);
+            
+            
+            if (numero2 === 0) {
+                alert("ERRO: A divisão por zero é indefinida. Por favor, tente novamente com um Divisor diferente de zero.");
+                return; 
+            }
+            let quociente = numero1 / numero2;
+
+            alert(`O resultado da divisão de ${numero1} por ${numero2} é: ${quociente}`);
+        }
+    </script>
+</body>
+</html>

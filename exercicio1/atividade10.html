@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo de Juros Simples</title>
+</head>
+<body>
+    <h1>Calculadora de Juros Simples</h1>
+    <p>Clique no botão para digitar o capital, a taxa (em % ao mês) e o tempo (em meses).</p>
+
+    <button onclick="calcularJurosSimples()">Calcular Montante</button>
+    
+    <script>
+        function calcularJurosSimples() {
+            let capital_string = prompt("Digite o CAPITAL inicial (R$):");
+            let taxa_string = prompt("Digite a TAXA de juros (i) em % ao mês:");
+            let tempo_string = prompt("Digite o TEMPO (t) em meses:");
+
+            let capital = Number(capital_string);
+            let taxaPercentual = Number(taxa_string);
+            let tempo = Number(tempo_string);
+    
+            if (isNaN(capital) || isNaN(taxaPercentual) || isNaN(tempo) || capital <= 0 || tempo <= 0 || taxaPercentual < 0) {
+                alert("Entradas inválidas. O Capital e o Tempo devem ser positivos, e a Taxa deve ser um número não negativo.");
+                return;
+            }
+
+            let taxaDecimal = taxaPercentual / 100;
+            
+            let juros = capital * taxaDecimal * tempo;
+            
+            let montante = capital + juros;
+            alert(`
+                Capital (C): R$${capital.toFixed(2)}
+                Taxa (i): ${taxaPercentual}% ao mês
+                Tempo (t): ${tempo} meses
+                
+                Juros (J): R$${juros.toFixed(2)}
+                
+                O Montante Final (M) é: R$${montante.toFixed(2)}
+            `);
+        }
+    </script>
+</body>
+</html>
