@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma Formatado</title>
+</head>
+<body>
+    <script>
+      let entrada1 = prompt("Digite o primeiro número:");
+        let numero1 = parseFloat(entrada1);
+        let entrada2 = prompt("Digite o segundo número:");
+        let numero2 = parseFloat(entrada2);
+        if (isNaN(numero1) || isNaN(numero2) || entrada1 === null || entrada2 === null) {
+            alert("Entrada inválida. Por favor, digite dois números válidos.");
+        } else {
+            // 4. Realiza a soma dos números
+            let soma = numero1 + numero2;
+            
+            // 5. Formata o resultado da soma para 2 casas decimais usando toFixed(2)
+            // O resultado é uma string.
+            let somaFormatada = soma.toFixed(2);
+        
+            let mensagem = `
+                Primeiro Número: ${numero1}
+                Segundo Número: ${numero2}
+                Soma Total: ${soma}
+                
+                Resultado Formatado (2 casas decimais): ${somaFormatada}
+            `;
+            
+            alert(mensagem);
+        }
+    </script>
+</body>

@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador JS</title>
+</head>
+<body>
+    <h1>Contador de Caracteres</h1>
+    <p>Ao carregar a página, uma caixa de diálogo irá solicitar a palavra.</p>
+
+    <script>
+        let palavraCompleta = prompt("Digite uma palavra ou frase:");
+
+        if (palavraCompleta !== null) {
+            let palavraLimpa = palavraCompleta.trim(); 
+
+            if (palavraLimpa.length > 0) {
+                let numeroDeCaracteres = palavraLimpa.length;
+                alert(`A palavra/frase digitada ("${palavraLimpa}") possui ${numeroDeCaracteres} caracteres.`);
+            } else {
+                alert("Você não digitou nenhuma palavra válida.");
+            }
+        } else {
+            alert("Operação cancelada pelo usuário.");
+        }
+    </script>
+</body>
+</html>

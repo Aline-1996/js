@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter o texto para maiúscula</title>
+</head>
+<body>
+    <script>
+let textoOriginal = prompt("Digite um texto (pode ser em minúsculas ou misto):");
+
+if (textoOriginal !== null) {
+    let textoMaiusculo = textoOriginal.toUpperCase();
+    alert(`O texto original era: "${textoOriginal}"\n\nO texto em maiúsculas é: "${textoMaiusculo}"`);
+    
+} else {
+
+    alert("Operação cancelada. Nenhuma entrada foi fornecida.");
+}
+    </script>
+</body>
+</html>

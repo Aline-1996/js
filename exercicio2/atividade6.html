@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>casa Decimais</title>
+</head>
+<body>
+    <script>
+        let entrada = prompt("Digite um número decimal para ser formatado (ex: 98.765):");
+        let numeroDecimal = parseFloat(entrada);
+        if (isNaN(numeroDecimal) || entrada === null) {
+            alert("Entrada inválida ou cancelada. Por favor, digite um número.");
+            } else {
+                let mensagem = `
+                Número Original (Float): ${numeroDecimal}
+                
+                Número Formatado (com toFixed(2)): ${numeroFormatado}
+            `;
+            
+            alert(mensagem);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Caracteres</title>
+</head>
+<body>
+    <h1>Contador de Caracteres em JS</h1>
+    <p>Clique em OK para iniciar o script que pedirá uma palavra.</p>
+    <script>
+        let palavra = prompt("Digite uma palavra:");
+
+        if (palavra !== null && palavra.trim() !== "") {
+            let numeroDeCaracteres = palavra.length;
+            alert(`A palavra "${palavra}" possui ${numeroDeCaracteres} caracteres.`);
+        } else {
+            alert("Nenhuma palavra foi digitada. Por favor, tente novamente.");
+        }
+    </script>
+</body>
+</html>

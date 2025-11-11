@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Caracteres em Maiúsculas</title>
+</head>
+<body>
+    <script>
+        let fraseOriginal = prompt("Por favor, digite uma frase:");
+        if (fraseOriginal === null || fraseOriginal.trim() === "") {
+            alert("Operação cancelada ou nenhuma frase digitada.");
+        } else {
+            let fraseMaiuscula = fraseOriginal.toUpperCase();
+            let numeroCaracteres = fraseMaiuscula.length;
+            let mensagem = `
+                Frase Original: "${fraseOriginal}"
+                Frase em Maiúsculas: "${fraseMaiuscula}"
+                Número de Caracteres: ${numeroCaracteres}
+            `;
+            
+            window.alert(mensagem);
+        }
+    </script>
+</body>
+</html>

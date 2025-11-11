@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Caracteres Numéricos</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita a entrada do usuário. O prompt já retorna uma STRING.
+        // No entanto, vamos simular a conversão forçada para demonstrar o conceito.
+        let entrada = prompt("Digite um número (pode ser inteiro ou decimal, ex: 1234.56):");
+
+        // Verifica se a entrada não foi nula (usuário cancelou)
+        if (entrada === null || entrada.trim() === "") {
+            alert("Operação cancelada ou nenhuma entrada fornecida.");
+        } else {
+            // Converte a string de entrada para um número (Float) primeiro,
+            // para garantir que o que estamos contando é um número e não texto aleatório.
+            let numero = parseFloat(entrada);
+
+            // Verifica se é um número válido antes de continuar
+            if (isNaN(numero)) {
+                alert("Entrada inválida. Por favor, digite um número.");
+            } else {
+                // 2. Converte o número (que é um tipo Number) explicitamente para uma String.
+                // Usamos o método .toString()
+                let numeroComoString = numero.toString();
+                
+                // 3. Conta o número de caracteres na string resultante.
+                // Isso inclui dígitos, o ponto decimal e, potencialmente, o sinal de negativo.
+                let contagemCaracteres = numeroComoString.length;
+
+                // 4. Exibe os resultados.
+                let mensagem = `
+                    Número Original (Tipo Number): ${numero}
+                    
+                    Número Convertido para String: "${numeroComoString}"
+                    
+                    Número de Caracteres: ${contagemCaracteres}
+                `;
+                
+                alert(mensagem);
+            }
+        }
+    </script>
+</body>
+</html>

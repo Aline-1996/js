@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamanho Combinado de Textos</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita o primeiro texto
+        let textoA = prompt("Digite o primeiro texto:");
+
+        // 2. Solicita o segundo texto
+        let textoB = prompt("Digite o segundo texto:");
+
+        // Verifica se ambas as entradas são válidas (não nulas)
+        if (textoA === null || textoB === null) {
+            alert("Operação cancelada. Por favor, forneça ambos os textos.");
+        } else {
+            // 3. Converte ambos os textos para MAIÚSCULAS
+            let textoMaiusculoA = textoA.toUpperCase();
+            let textoMaiusculoB = textoB.toUpperCase();
+
+            // 4. Obtém o tamanho (length) de cada texto
+            let tamanhoA = textoMaiusculoA.length;
+            let tamanhoB = textoMaiusculoB.length;
+            
+            // 5. Calcula o tamanho total combinado
+            let tamanhoTotal = tamanhoA + tamanhoB;
+
+            // 6. Exibe os resultados
+            let mensagem = `
+                Texto 1 em Maiúsculas: "${textoMaiusculoA}" (Tamanho: ${tamanhoA})
+                Texto 2 em Maiúsculas: "${textoMaiusculoB}" (Tamanho: ${tamanhoB})
+                
+                Tamanho Total Combinado: ${tamanhoTotal} caracteres.
+            `;
+            
+            alert(mensagem);
+        }
+    </script>
+</body>
+</html>

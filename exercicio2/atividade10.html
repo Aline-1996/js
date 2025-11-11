@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>álculo de Média Formatada</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita o primeiro número
+        let entrada1 = prompt("Digite o primeiro número:");
+        let numero1 = parseFloat(entrada1);
+
+        // 2. Solicita o segundo número
+        let entrada2 = prompt("Digite o segundo número:");
+        let numero2 = parseFloat(entrada2);
+        
+        // 3. Verifica se ambas as entradas são números válidos
+        if (isNaN(numero1) || isNaN(numero2) || entrada1 === null || entrada2 === null) {
+            alert("Entrada inválida. Por favor, digite dois números válidos.");
+        } else {
+            // 4. Calcula a SOMA e a MÉDIA
+            let soma = numero1 + numero2;
+            let media = soma / 2; // Fórmula da média para dois números
+            
+            // 5. Formata a média para 2 casas decimais
+            // O resultado é uma string.
+            let mediaFormatada = media.toFixed(2);
+            
+            // 6. Exibe o resultado
+            let mensagem = `
+                Número 1: ${numero1}
+                Número 2: ${numero2}
+                
+                Média Bruta: ${media}
+                
+                Média Formatada (2 casas decimais): ${mediaFormatada}
+            `;
+            
+            alert(mensagem);
+        }
+    </script>
+</body>
+</html>
