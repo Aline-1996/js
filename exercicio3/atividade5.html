@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Números</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita o primeiro número
+        let entradaA = prompt("Digite o primeiro número:");
+        let numeroA = parseFloat(entradaA);
+
+        // 2. Solicita o segundo número
+        let entradaB = prompt("Digite o segundo número:");
+        let numeroB = parseFloat(entradaB);
+        
+        // 3. Verifica se as entradas são números válidos
+        if (isNaN(numeroA) || isNaN(numeroB) || entradaA === null || entradaB === null) {
+            alert("Entrada inválida. Por favor, digite dois números válidos.");
+        } else {
+            // 4. Compara os dois números
+            if (numeroA > numeroB) {
+                // Se o primeiro número for maior que o segundo
+                alert(`O PRIMEIRO número (${numeroA}) é o MAIOR.`);
+            } else if (numeroB > numeroA) {
+                // Se o segundo número for maior que o primeiro
+                alert(`O SEGUNDO número (${numeroB}) é o MAIOR.`);
+            } else {
+                // Se nenhum for maior que o outro, eles são iguais
+                alert(`Os números (${numeroA} e ${numeroB}) são IGUAIS.`);
+            }
+        }
+    </script>
+</body>
+</html>

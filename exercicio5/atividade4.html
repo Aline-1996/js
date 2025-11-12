@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador de Palavras-Chave (SEO)</title>
+</head>
+<body>
+
+    <h1>Contador de Palavras-Chave</h1>
+    
+    <label for="inputPalavra">1. Palavra-Chave a Buscar:</label>
+    <input type="text" id="inputPalavra" value="JavaScript"> 
+    
+    <br><br>
+    
+    <label for="inputTexto">2. Digite o Texto:</label>
+    <textarea id="inputTexto" rows="5" cols="50">
+JavaScript é uma linguagem. JavaScript é essencial para web. Vamos aprender JavaScript!
+    </textarea>
+    
+    <br><br>
+    
+    <button onclick="contarOcorrencias()">Contar Ocorrências</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+       
+        function contarPalavraChave(texto, palavra) {
+            
+            // 1. Converte ambos para minúsculas para garantir que a busca não seja case-sensitive
+            const textoBusca = texto.toLowerCase();
+            const palavraBusca = palavra.toLowerCase();
+            
+            // Se a palavra-chave for vazia, não há o que contar
+            if (palavraBusca.length === 0) {
+                return 0;
+            }
+
+            let contagem = 0;
+            let posicao = textoBusca.indexOf(palavraBusca); // Inicia a busca na posição 0
+
+            // 2. Loop para buscar todas as ocorrências
+            // O loop continua enquanto indexOf() retornar uma posição válida (>= 0)
+            while (posicao !== -1) {
+                contagem++; // Incrementa o contador
+                
+                // 3. Continua a busca a partir do caractere seguinte à ocorrência encontrada
+                // Isso impede que a mesma palavra seja contada infinitamente.
+                posicao = textoBusca.indexOf(palavraBusca, posicao + palavraBusca.length);
+            }
+
+            return contagem;
+        }
+
+        /**
+         * Obtém as entradas do usuário e exibe o resultado.
+         */
+        function contarOcorrencias() {
+            // 1. Pega os valores dos inputs
+            const palavra = document.getElementById('inputPalavra').value.trim();
+            const texto = document.getElementById('inputTexto').value;
+            
+            const resultadoElement = document.getElementById('resultado');
+            
+            // 2. Validação
+            if (palavra === "") {
+                resultadoElement.style.color = 'red';
+                resultadoElement.textContent = "Erro: A palavra-chave não pode ser vazia.";
+                return;
+            }
+
+            // 3. Realiza a contagem
+            const totalOcorrencias = contarPalavraChave(texto, palavra);
+            
+            // 4. Exibe o resultado
+            resultadoElement.style.color = 'black';
+            resultadoElement.innerHTML = `
+                A palavra **"${palavra}"** aparece **${totalOcorrencias}** vez(es) no texto.
+            `;
+        }
+    </script>
+
+</body>
+</html>

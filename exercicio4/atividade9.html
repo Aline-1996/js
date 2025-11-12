@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Soma dos Múltiplos</title>
+</head>
+<body>
+
+    <h1>Soma dos Múltiplos (Até um Limite)</h1>
+    
+    <label for="inputBase">Número Base (Múltiplo de):</label>
+    <input type="number" id="inputBase" value="3" min="1"> 
+    
+    <br><br>
+    
+    <label for="inputLimite">Limite Máximo (N):</label>
+    <input type="number" id="inputLimite" value="10" min="1"> 
+    
+    <button onclick="calcularSomaMultiplos()">Calcular Soma</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+
+        function somarMultiplos(base, limiteN) {
+            
+            // Validação básica
+            if (!Number.isInteger(base) || base < 1 || !Number.isInteger(limiteN) || limiteN < 1) {
+                return "Erro: Ambos os valores devem ser inteiros positivos.";
+            }
+
+            let soma = 0;
+            
+            // 1. Encontra o primeiro múltiplo da base
+            // Neste caso, o primeiro múltiplo é a própria base (base * 1)
+            let i = base; 
+            
+            // 2. Loop que itera, pulando de múltiplo em múltiplo (i += base)
+            while (i <= limiteN) {
+                soma += i; // Adiciona o múltiplo atual à soma
+                i += base; // Pula para o próximo múltiplo (ex: de 3 para 6, de 6 para 9)
+            }
+            
+            return soma;
+        }
+
+        /**
+         * Obtém as entradas, calcula a soma e exibe o resultado.
+         */
+        function calcularSomaMultiplos() {
+            // 1. Pega e converte os valores de entrada
+            const base = parseInt(document.getElementById('inputBase').value);
+            const limiteN = parseInt(document.getElementById('inputLimite').value);
+            
+            // 2. Calcula a soma
+            const resultado = somarMultiplos(base, limiteN);
+            
+            // 3. Exibe o resultado
+            const resultadoElement = document.getElementById('resultado');
+            
+            if (typeof resultado === 'string') {
+                resultadoElement.style.color = 'red';
+                resultadoElement.textContent = resultado;
+            } else {
+                resultadoElement.style.color = 'black';
+                resultadoElement.innerHTML = `A **soma dos múltiplos de ${base}** até **${limiteN}** é: **${resultado}**`;
+            }
+        }
+    </script>
+
+</body>
+</html>

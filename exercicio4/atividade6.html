@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contagem de Divisores</title>
+</head>
+<body>
+
+    <h1>Contagem de Divisores</h1>
+    
+    <label for="inputNumero">Digite um número inteiro:</label>
+    <input type="number" id="inputNumero" value="12" min="1"> 
+    
+    <button onclick="exibirContagemDivisores()">Contar Divisores</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Conta quantos divisores inteiros positivos o número N possui.
+         * Usa Math.sqrt() para otimizar o processo.
+         * @param {number} N - O número para contar os divisores.
+         * @returns {number|string} O total de divisores ou uma mensagem de erro.
+         */
+        function contarDivisores(N) {
+            
+            // Validação básica
+            if (!Number.isInteger(N) || N <= 0) {
+                return "Erro: O número deve ser um inteiro positivo.";
+            }
+
+            // O número 1 tem apenas 1 divisor (ele mesmo).
+            if (N === 1) {
+                return 1;
+            }
+
+            let contagem = 0;
+            const limite = Math.sqrt(N); 
+
+            // Itera de 1 até a raiz quadrada de N
+            for (let i = 1; i <= limite; i++) {
+                if (N % i === 0) {
+                    // Se i é um divisor
+                    contagem++; 
+                    
+                    // Se i * i não for igual a N, significa que i e N/i são divisores distintos.
+                    // Portanto, contamos N/i como o segundo divisor no par.
+                    if (i * i !== N) {
+                        contagem++;
+                    }
+                    // Se i * i for igual a N (N é um quadrado perfeito), contamos o divisor apenas uma vez.
+                }
+            }
+            
+            return contagem;
+        }
+
+        /**
+         * Obtém a entrada, realiza a contagem e exibe o resultado.
+         */
+        function exibirContagemDivisores() {
+            // 1. Pega e converte o valor de entrada
+            const input = document.getElementById('inputNumero').value;
+            const N = parseInt(input);
+            
+            // 2. Realiza a contagem
+            const resultado = contarDivisores(N);
+            
+            // 3. Exibe
+            const resultadoElement = document.getElementById('resultado');
+            
+            if (typeof resultado === 'string') {
+                resultadoElement.style.color = 'red';
+                resultadoElement.textContent = resultado;
+            } else {
+                resultadoElement.style.color = 'black';
+                resultadoElement.innerHTML = `O número **${N}** possui um total de **${resultado}** divisores.`;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Adivinhação</title>
+</head>
+<body>
+
+    <h1>Jogo de Adivinhação (1 a 10)</h1>
+    
+    <button onclick="iniciarJogo()">Iniciar Novo Jogo</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Gera um número inteiro aleatório entre um mínimo e um máximo.
+         * Utiliza Math.random() e Math.floor().
+         * @param {number} min - Valor mínimo (inclusivo).
+         * @param {number} max - Valor máximo (inclusivo).
+         * @returns {number} O número secreto.
+         */
+        function gerarNumeroSecreto(min, max) {
+            // Math.random() gera um decimal entre 0 (inclusivo) e 1 (exclusivo).
+            // A fórmula Math.floor(Math.random() * (max - min + 1)) + min
+            // garante que o resultado esteja no intervalo [min, max].
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        /**
+         * Lógica principal do jogo, executada após o clique no botão.
+         */
+        function iniciarJogo() {
+            const MIN = 1;
+            const MAX = 10;
+            const numeroSecreto = gerarNumeroSecreto(MIN, MAX);
+            
+            let palpite = 0;
+            let tentativas = 0;
+            const resultadoElement = document.getElementById('resultado');
+
+            // Exibe a instrução inicial
+            resultadoElement.innerHTML = `O computador escolheu um número entre ${MIN} e ${MAX}. Tente adivinhar!`;
+
+            // Loop do...while garante que o palpite seja pedido pelo menos uma vez.
+            do {
+                // Solicita o palpite do usuário
+                const entrada = prompt(`Tentativa ${tentativas + 1}: Digite seu palpite (entre ${MIN} e ${MAX}):`);
+                
+                // Converte a entrada para número
+                palpite = parseInt(entrada);
+                tentativas++;
+                
+                // Validação e feedback
+                if (isNaN(palpite) || palpite < MIN || palpite > MAX) {
+                    alert(`Palpite inválido! Digite um número entre ${MIN} e ${MAX}.`);
+                    tentativas--; // Desconta tentativa inválida
+                } else if (palpite < numeroSecreto) {
+                    alert("Seu palpite está muito baixo. Tente novamente!");
+                } else if (palpite > numeroSecreto) {
+                    alert("Seu palpite está muito alto. Tente novamente!");
+                }
+
+            } while (palpite !== numeroSecreto);
+
+            // Resultado final
+            resultadoElement.style.color = 'green';
+            resultadoElement.innerHTML = `
+                Parabéns! Você acertou o número **${numeroSecreto}**!
+                <br>
+                Foram necessárias **${tentativas}** tentativa(s).
+            `;
+        }
+    </script>
+
+</body>
+</html>

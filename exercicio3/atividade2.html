@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+        // 1. Solicita um valor ao usuário
+        let entrada = prompt("Digite um número inteiro:");
+
+        // 2. Converte a entrada para número (float) e depois para inteiro (para módulo funcionar bem)
+        let numero = parseInt(entrada);
+
+        // 3. Verifica se a entrada é um número inteiro válido
+        if (entrada === null || isNaN(numero)) {
+            alert("Entrada inválida. Por favor, digite um número inteiro.");
+        } else {
+            // 4. Verifica se o número é par
+            // O operador % (módulo) retorna o resto da divisão.
+            if (numero % 2 === 0) {
+                // É par se o resto da divisão por 2 for 0
+                alert(`O número ${numero} é PAR.`);
+            } else {
+                // Se o resto não for 0 (será 1 ou -1 para inteiros), é ímpar
+                alert(`O número ${numero} é ÍMPAR.`);
+            }
+        }
+
+    </script>
+</body>
+</html>

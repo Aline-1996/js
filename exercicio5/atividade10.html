@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplicador Progressivo</title>
+</head>
+<body>
+
+    <h1>Multiplicador de Valores (Até > 1000)</h1>
+    
+    <label for="inputInicial">Número Inicial:</label>
+    <input type="number" id="inputInicial" value="5"> 
+    
+    <br><br>
+    
+    <label for="inputMultiplicador">Valor Multiplicador:</label>
+    <input type="number" id="inputMultiplicador" value="3"> 
+    
+    <button onclick="multiplicarProgressivamente()">Calcular Multiplicação</button>
+    
+    <div id="resultado"></div>
+
+    <script>
+        /**
+         * Multiplica o valor inicial sucessivamente pelo multiplicador até que o resultado > 1000.
+         */
+        function multiplicarProgressivamente() {
+            // 1. Pega e converte os valores de entrada
+            let valor = parseFloat(document.getElementById('inputInicial').value);
+            const multiplicador = parseFloat(document.getElementById('inputMultiplicador').value);
+            
+            const resultadoElement = document.getElementById('resultado');
+            
+            // 2. Validação básica
+            if (isNaN(valor) || isNaN(multiplicador) || multiplicador <= 1) {
+                resultadoElement.style.color = 'red';
+                resultadoElement.innerHTML = "Erro: Por favor, insira números válidos. O multiplicador deve ser maior que 1 para que a progressão ocorra.";
+                return;
+            }
+
+            // 3. Variáveis para armazenar o processo e contagem
+            let resultadosHTML = `<h2>Resultados:</h2>`;
+            let passo = 0;
+            
+            resultadoElement.style.color = 'black';
+            
+            // Exibe o valor inicial antes de qualquer multiplicação
+            resultadosHTML += `<p>Passo 0 (Inicial): ${valor.toFixed(2)}</p>`;
+
+
+            // 4. Loop while: Continua enquanto o valor for menor ou igual a 1000
+            while (valor <= 1000) {
+                passo++;
+                
+                // Salva o valor anterior para exibição
+                const valorAnterior = valor;
+                
+                // Realiza a multiplicação progressiva
+                valor *= multiplicador;
+                
+                // Adiciona o resultado formatado à string de saída
+                resultadosHTML += `<p>Passo ${passo}: ${valorAnterior.toFixed(2)} x ${multiplicador} = <strong>${valor.toFixed(2)}</strong></p>`;
+            }
+            
+            // 5. Exibe o resultado final
+            resultadosHTML += `<br><strong>O valor final (${valor.toFixed(2)}) excedeu 1000.</strong>`;
+            resultadoElement.innerHTML = resultadosHTML;
+        }
+    </script>
+
+</body>
+</html>

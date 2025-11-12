@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma Maior que 10</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita o primeiro número
+        let entrada1 = prompt("Digite o primeiro número:");
+        let numero1 = parseFloat(entrada1);
+
+        // 2. Solicita o segundo número
+        let entrada2 = prompt("Digite o segundo número:");
+        let numero2 = parseFloat(entrada2);
+        
+        // 3. Verifica se as entradas são números válidos
+        if (isNaN(numero1) || isNaN(numero2) || entrada1 === null || entrada2 === null) {
+            alert("Entrada inválida. Por favor, digite dois números válidos.");
+        } else {
+            // 4. Calcula a soma
+            let soma = numero1 + numero2;
+            
+            // 5. Verifica a condição: A soma é maior que 10? (soma > 10)
+            if (soma > 10) {
+                alert(`A soma de ${numero1} e ${numero2} é ${soma}.\nO resultado é MAIOR que 10.`);
+            } else {
+                alert(`A soma de ${numero1} e ${numero2} é ${soma}.\nO resultado NÃO é maior que 10.`);
+            }
+        }
+    </script>
+</body>
+</html>

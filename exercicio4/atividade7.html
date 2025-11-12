@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Potência Progressiva</title>
+</head>
+<body>
+
+    <h1>Potência Progressiva (B^1 até B^E_max)</h1>
+    
+    <label for="inputBase">Número Base (B):</label>
+    <input type="number" id="inputBase" value="2"> 
+    
+    <br><br>
+    
+    <label for="inputExpoenteMax">Expoente Máximo (E_max):</label>
+    <input type="number" id="inputExpoenteMax" value="5" min="1"> 
+    
+    <button onclick="gerarPotencias()">Calcular Potências</button>
+    
+    <div id="resultado"></div>
+
+    <script>
+        /**
+         * Calcula as potências de uma base de 1 até o expoente máximo e exibe os resultados.
+         */
+        function gerarPotencias() {
+            // 1. Pega e converte os valores de entrada
+            const base = parseFloat(document.getElementById('inputBase').value);
+            const expoenteMax = parseInt(document.getElementById('inputExpoenteMax').value);
+            
+            const resultadoElement = document.getElementById('resultado');
+            
+            // 2. Validação básica
+            if (isNaN(base) || !Number.isInteger(expoenteMax) || expoenteMax < 1) {
+                resultadoElement.style.color = 'red';
+                resultadoElement.innerHTML = "Erro: Por favor, insira valores numéricos válidos e um Expoente Máximo >= 1.";
+                return;
+            }
+
+            // 3. Inicializa a string que armazenará os resultados formatados
+            let potenciasHTML = `<h2>Potências de ${base} (até ${expoenteMax}):</h2>`;
+            potenciasHTML += '<ul>';
+            
+            // 4. Loop para calcular as potências de 1 até o máximo
+            for (let e = 1; e <= expoenteMax; e++) {
+                // Utiliza Math.pow(base, expoente) para calcular a potência
+                const resultado = Math.pow(base, e);
+                
+                // Adiciona o resultado como um item de lista
+                potenciasHTML += `<li>${base} ^ ${e} = <strong>${resultado}</strong></li>`;
+            }
+            
+            potenciasHTML += '</ul>';
+
+            // 5. Exibe os resultados completos
+            resultadoElement.style.color = 'black';
+            resultadoElement.innerHTML = potenciasHTML;
+        }
+    </script>
+
+</body>
+</html>

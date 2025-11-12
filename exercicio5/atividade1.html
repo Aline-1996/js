@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Taxas Bancárias</title>
+</head>
+<body>
+
+    <h1>Calculadora de Saldo com Juros Compostos</h1>
+    
+    <p>Taxa Mensal: 2% (0.02)</p>
+    <p>Período: 6 meses</p>
+    
+    <label for="inputSaldo">Saldo Inicial (R$):</label>
+    <input type="number" id="inputSaldo" value="1000" min="0"> 
+    
+    <button onclick="calcularSaldoFinal()">Calcular Saldo Após 6 Meses</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Calcula o saldo final após um período de 6 meses com taxa de juros composta de 2% ao mês.
+         */
+        function calcularSaldoFinal() {
+            // Constantes do problema
+            const TAXA_MENSAL = 0.02; // 2%
+            const MESES = 6;
+            
+            // 1. Pega e converte o valor de entrada
+            const inputElement = document.getElementById('inputSaldo');
+            const saldoInicial = parseFloat(inputElement.value);
+            
+            const resultadoElement = document.getElementById('resultado');
+            
+            // 2. Validação
+            if (isNaN(saldoInicial) || saldoInicial < 0) {
+                resultadoElement.style.color = 'red';
+                resultadoElement.innerHTML = "Erro: Por favor, insira um saldo inicial válido (maior ou igual a zero).";
+                return;
+            }
+
+            // 3. Cálculo dos juros compostos
+            // Fórmula: Saldo Final = Saldo Inicial * (1 + Taxa)^Meses
+            // O Math.pow() calcula (1 + 0.02) elevado a 6.
+            const fatorAcumulado = Math.pow(1 + TAXA_MENSAL, MESES);
+            const saldoFinal = saldoInicial * fatorAcumulado;
+            
+            // 4. Formata o resultado para moeda (2 casas decimais)
+            const saldoFormatado = saldoFinal.toFixed(2);
+            const saldoInicialFormatado = saldoInicial.toFixed(2);
+
+            // 5. Exibe o resultado
+            resultadoElement.style.color = 'black';
+            resultadoElement.innerHTML = `
+                <br>
+                **Saldo Inicial:** R$ ${saldoInicialFormatado}
+                <br>
+                **Taxa:** 2% ao mês
+                <br>
+                **Período:** 6 meses
+                <br>
+                ---
+                <br>
+                **Saldo Final:** R$ **${saldoFormatado}**
+            `;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Maioridade</title>
+</head>
+<body>
+<script>
+        // 1. Solicita a idade do usuário
+        let entradaIdade = prompt("Digite sua idade:");
+
+        // 2. Converte a entrada para um número inteiro
+        let idade = parseInt(entradaIdade);
+
+        // 3. Verifica se a entrada é um número válido e maior que zero
+        if (entradaIdade === null || isNaN(idade) || idade < 0) {
+            alert("Entrada inválida. Por favor, digite uma idade numérica válida.");
+        } else {
+            // 4. Verifica a condição: idade é maior ou igual a 18? (>= 18)
+            const MAIORIDADE = 18;
+            
+            if (idade >= MAIORIDADE) {
+                // É maior de idade
+                alert(`Você tem ${idade} anos. Você é MAIOR de idade.`);
+            } else {
+                // É menor de idade
+                let anosFaltantes = MAIORIDADE - idade;
+                alert(`Você tem ${idade} anos. Você é MENOR de idade. Faltam ${anosFaltantes} anos.`);
+            }
+        }
+    </script>
+</body>
+</html>

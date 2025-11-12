@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabuada Personalizada</title>
+</head>
+<body>
+
+    <h1>Tabuada Personalizada</h1>
+    
+    <label for="inputNumero">Digite o número da tabuada:</label>
+    <input type="number" id="inputNumero" value="7" min="1">
+    
+    <button onclick="gerarTabuada()">Gerar Tabuada</button>
+    
+    <div id="resultado"></div>
+
+    <script>
+        /**
+         * Gera a tabuada de um número de 1 até 10 e exibe o resultado no DOM.
+         */
+        function gerarTabuada() {
+            // 1. Pega e converte o valor de entrada
+            const input = document.getElementById('inputNumero').value;
+            const numero = parseInt(input);
+            
+            const resultadoElement = document.getElementById('resultado');
+            
+            // 2. Validação básica
+            if (!Number.isInteger(numero) || numero < 1) {
+                resultadoElement.style.color = 'red';
+                resultadoElement.innerHTML = "Erro: Por favor, insira um número inteiro positivo válido.";
+                return;
+            }
+
+            // 3. Inicializa a string que armazenará a tabuada formatada em HTML
+            let tabuadaHTML = `<h2>Tabuada do ${numero}:</h2>`;
+            tabuadaHTML += '<ul>';
+            
+            // 4. Loop para calcular e formatar as 10 operações
+            for (let i = 1; i <= 10; i++) {
+                const resultado = numero * i;
+                // Adiciona cada linha da tabuada como um item de lista
+                tabuadaHTML += `<li>${numero} x ${i} = <strong>${resultado}</strong></li>`;
+            }
+            
+            tabuadaHTML += '</ul>';
+
+            // 5. Exibe a tabuada completa
+            resultadoElement.style.color = 'black';
+            resultadoElement.innerHTML = tabuadaHTML;
+        }
+    </script>
+
+</body>
+</html>

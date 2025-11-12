@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Verificação de Número Primo</title>
+</head>
+<body>
+
+    <h1>Verificação de Número Primo</h1>
+    
+    <label for="inputNumero">Digite um número inteiro:</label>
+    <input type="number" id="inputNumero" value="17">
+    
+    <button onclick="exibirResultadoPrimo()">Verificar</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Verifica se um número N é primo usando Math.sqrt() para otimizar.
+         * @param {number} N - O número a ser verificado.
+         * @returns {boolean} Retorna true se for primo, false caso contrário.
+         */
+        function verificarPrimo(N) {
+            
+            // Caso 1: Números menores ou iguais a 1 não são primos por definição.
+            if (N <= 1) {
+                return false;
+            }
+            
+            // Caso 2: O único número primo par é 2.
+            if (N === 2) {
+                return true;
+            }
+            
+            // Caso 3: Elimina todos os números pares maiores que 2.
+            if (N % 2 === 0) {
+                return false;
+            }
+
+            // Caso 4: Testa a divisibilidade por ímpares de 3 até a raiz quadrada de N.
+            // O uso de Math.sqrt(N) reduz o número de testes, tornando o algoritmo mais eficiente.
+            const limite = Math.sqrt(N); 
+            
+            for (let i = 3; i <= limite; i += 2) {
+                // Se N for divisível por i, ele não é primo.
+                if (N % i === 0) {
+                    return false; 
+                }
+            }
+            
+            // Se o loop terminar sem encontrar divisores, o número é primo.
+            return true;
+        }
+
+        /**
+         * Obtém a entrada, verifica o número e exibe o resultado.
+         */
+        function exibirResultadoPrimo() {
+            // 1. Pega e converte o valor de entrada
+            const input = document.getElementById('inputNumero').value;
+            const N = parseInt(input);
+            
+            // 2. Realiza a verificação
+            const resultadoElement = document.getElementById('resultado');
+
+            if (!Number.isInteger(N)) {
+                 resultadoElement.style.color = 'red';
+                 resultadoElement.textContent = "Erro: Por favor, insira um número inteiro.";
+                 return;
+            }
+
+            const ehPrimo = verificarPrimo(N);
+            
+            // 3. Exibe o resultado
+            if (ehPrimo) {
+                resultadoElement.style.color = 'green';
+                resultadoElement.textContent = `O número ${N} é um NÚMERO PRIMO.`;
+            } else {
+                resultadoElement.style.color = 'blue';
+                resultadoElement.textContent = `O número ${N} NÃO é um número primo.`;
+            }
+        }
+    </script>
+
+</body>
+</html>

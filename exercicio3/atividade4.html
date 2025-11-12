@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Múltiplo de 5</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita um valor ao usuário
+        let entrada = prompt("Digite um número inteiro:");
+
+        // 2. Converte a entrada para um número inteiro
+        let numero = parseInt(entrada);
+
+        // 3. Verifica se a entrada é um número inteiro válido
+        if (entrada === null || isNaN(numero)) {
+            alert("Entrada inválida. Por favor, digite um número inteiro.");
+        } else {
+            // 4. Verifica a condição: o resto da divisão por 5 é zero?
+            if (numero % 5 === 0) {
+                // É múltiplo de 5
+                alert(`O número ${numero} é MÚLTIPLO de 5.`);
+            } else {
+                // Não é múltiplo de 5
+                alert(`O número ${numero} NÃO é múltiplo de 5. O resto da divisão por 5 é ${numero % 5}.`);
+            }
+        }
+    </script>
+</body>
+</html>

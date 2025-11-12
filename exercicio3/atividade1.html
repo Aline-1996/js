@@ -1,11 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora de Fatorial Simples</title>
 </head>
 <body>
+
+    <h1>Cálculo do Fatorial</h1>
     
+    <label for="inputNumero">Digite um número inteiro positivo:</label>
+    <input type="number" id="inputNumero" value="5">
+    
+    <button onclick="exibirFatorialSimples()">Calcular</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Calcula o fatorial usando switch para casos base/validação e um loop for.
+         */
+        function calcularFatorialSimples(numero) {
+            
+            // Verifica a entrada para garantir que é um número inteiro não negativo
+            switch (true) {
+                case !Number.isInteger(numero) || numero < 0:
+                    return `Erro: ${numero} não é válido. Use inteiros não negativos.`;
+                
+                case numero === 0:
+                case numero === 1:
+                    return 1; // 0! = 1 e 1! = 1
+                
+                default:
+                    let fatorial = 1;
+                    for (let i = 2; i <= numero; i++) {
+                        fatorial *= i;
+                    }
+                    return fatorial;
+            }
+        }
+
+        /**
+         * Função que obtém a entrada, chama o cálculo e exibe o resultado.
+         */
+        function exibirFatorialSimples() {
+            // 1. Pega o valor do input e converte para número
+            const input = document.getElementById('inputNumero').value;
+            const numero = parseInt(input);
+            
+            // 2. Chama a função de cálculo
+            const resultado = calcularFatorialSimples(numero);
+            
+            // 3. Exibe o resultado no parágrafo
+            const resultadoElement = document.getElementById('resultado');
+            
+            if (typeof resultado === 'string' && resultado.startsWith('Erro:')) {
+                resultadoElement.style.color = 'red';
+                resultadoElement.textContent = resultado;
+            } else {
+                resultadoElement.style.color = 'black';
+                resultadoElement.textContent = `O fatorial de ${numero} é: ${resultado}`;
+            }
+        }
+    </script>
+
 </body>
 </html>

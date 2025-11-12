@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Combustível</title>
+</head>
+<body>
+
+    <h1>Controle de Combustível</h1>
+    
+    <button onclick="iniciarAbastecimento()">Iniciar Simulação</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Simula o abastecimento de veículos até que o tanque do posto esgote.
+         * Utiliza o loop do...while para garantir o atendimento de pelo menos 1 cliente.
+         */
+        function iniciarAbastecimento() {
+            const resultadoElement = document.getElementById('resultado');
+            
+            // 1. Solicita o total inicial de litros no tanque
+            const entradaTanque = prompt("Digite o total de litros disponíveis no tanque do posto:");
+            let tanque = parseFloat(entradaTanque);
+            
+            // Validação inicial
+            if (isNaN(tanque) || tanque <= 0) {
+                resultadoElement.style.color = 'red';
+                resultadoElement.textContent = "Erro: O total de litros deve ser um número positivo para iniciar.";
+                return;
+            }
+            
+            let clientesAtendidos = 0;
+            let abastecimento;
+
+            resultadoElement.style.color = 'black';
+            resultadoElement.innerHTML = `**Simulação Iniciada**<br>Tanque Inicial: ${tanque.toFixed(2)} Litros.`;
+
+            // 2. Loop do...while para processar clientes
+            do {
+                clientesAtendidos++;
+                
+                // Solicita a quantidade a ser abastecida
+                let entradaAbastecimento = prompt(`Cliente #${clientesAtendidos}: Quantos litros deseja abastecer? (Tanque restante: ${tanque.toFixed(2)} L)`);
+                abastecimento = parseFloat(entradaAbastecimento);
+                
+                // Validação do abastecimento
+                if (isNaN(abastecimento) || abastecimento <= 0) {
+                    alert("Entrada inválida. Abastecimento deve ser um número positivo. Este cliente não será contado.");
+                    clientesAtendidos--; // Desfaz a contagem
+                    // Se a entrada for inválida e o tanque ainda tiver combustível, o loop continua.
+                } else if (abastecimento > tanque) {
+                    // Se o cliente pedir mais do que o disponível
+                    alert(`O posto só tem ${tanque.toFixed(2)} litros. Abastecimento limitado.`);
+                    tanque = 0; // Tanque esgotado
+                    
+                    // Adiciona o cliente atendido (mesmo que parcialmente/limitado)
+                    resultadoElement.innerHTML += `<br>Cliente #${clientesAtendidos}: Tanque Esgotado.`;
+                } else {
+                    // Abastecimento normal
+                    tanque -= abastecimento;
+                    resultadoElement.innerHTML += `<br>Cliente #${clientesAtendidos}: Abasteceu ${abastecimento.toFixed(2)} L.`;
+                }
+
+            } while (tanque > 0 && abastecimento > 0); // Continua se o tanque tiver mais que 0 E se o último abastecimento foi válido/positivo.
+
+            // 3. Exibe o resultado final
+            resultadoElement.innerHTML += `
+                <br>
+                ---
+                <br>
+                **⛽ TANQUE ESGOTADO!**
+                <br>
+                Total de clientes atendidos: **${clientesAtendidos}**
+                <br>
+                Litros restantes: **${tanque.toFixed(2)}**
+            `;
+        }
+    </script>
+
+</body>
+</html>

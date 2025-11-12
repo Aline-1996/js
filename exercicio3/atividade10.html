@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Subtração Negativa</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita o primeiro número
+        let entrada1 = prompt("Digite o primeiro número (Minuendo):");
+        let numero1 = parseFloat(entrada1);
+
+        // 2. Solicita o segundo número
+        let entrada2 = prompt("Digite o segundo número (Subtraendo):");
+        let numero2 = parseFloat(entrada2);
+        
+        // 3. Verifica se as entradas são números válidos
+        if (isNaN(numero1) || isNaN(numero2) || entrada1 === null || entrada2 === null) {
+            alert("Entrada inválida. Por favor, digite dois números válidos.");
+        } else {
+            // 4. Realiza a subtração: Primeiro número MENOS o Segundo número
+            let resultado = numero1 - numero2;
+            
+            // 5. Verifica a condição: O resultado é menor que zero?
+            if (resultado < 0) {
+                alert(`O resultado da subtração (${numero1} - ${numero2} = ${resultado}) é NEGATIVO.`);
+            } else if (resultado > 0) {
+                alert(`O resultado da subtração (${numero1} - ${numero2} = ${resultado}) é POSITIVO.`);
+            } else {
+                // O resultado é 0
+                alert(`O resultado da subtração (${numero1} - ${numero2} = ${resultado}) é ZERO.`);
+            }
+        }
+    </script>
+</body>
+</html>

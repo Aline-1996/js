@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Número Negativo</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita um valor ao usuário
+        let entrada = prompt("Digite um número:");
+
+        // 2. Converte a entrada para número (float)
+        let numero = parseFloat(entrada);
+
+        // Verifica se a entrada é um número válido e não nula
+        if (entrada === null || isNaN(numero)) {
+            alert("Entrada inválida. Por favor, digite um valor numérico.");
+        } else {
+            // 3. Verifica a condição: se o número é estritamente menor que zero (<)
+            if (numero < 0) {
+                // É negativo
+                alert(`O número ${numero} é NEGATIVO.`);
+            } else if (numero > 0) {
+                // É positivo
+                alert(`O número ${numero} é POSITIVO.`);
+            } else {
+                // É zero (que não é negativo)
+                alert(`O número ${numero} é ZERO.`);
+            }
+        }
+    </script>
+</body>
+</html>

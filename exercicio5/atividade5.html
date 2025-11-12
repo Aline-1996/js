@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contagem Regressiva</title>
+</head>
+<body>
+
+    <h1>Simulador de Contagem Regressiva</h1>
+    
+    <label for="inputTempo">Tempo Inicial (segundos):</label>
+    <input type="number" id="inputTempo" value="10" min="1"> 
+    
+    <button onclick="iniciarContagem()" id="btnIniciar">Iniciar Contagem</button>
+    
+    <p id="display"></p>
+
+    <script>
+        // Variável global para armazenar o ID do intervalo, permitindo que ele seja cancelado.
+        let intervaloId = null;
+
+        /**
+         * Inicia a contagem regressiva a partir do valor fornecido pelo usuário.
+         */
+        function iniciarContagem() {
+            // Se já houver um timer ativo, primeiro o cancela.
+            if (intervaloId !== null) {
+                clearInterval(intervaloId);
+            }
+
+            // 1. Pega e converte o valor de entrada
+            const inputElement = document.getElementById('inputTempo');
+            let tempoRestante = parseInt(inputElement.value);
+            
+            const displayElement = document.getElementById('display');
+            const btnIniciar = document.getElementById('btnIniciar');
+
+            // 2. Validação básica
+            if (!Number.isInteger(tempoRestante) || tempoRestante <= 0) {
+                displayElement.style.color = 'red';
+                displayElement.textContent = "Erro: Insira um número inteiro positivo.";
+                return;
+            }
+
+            // Desabilita o botão para evitar múltiplos cliques
+            btnIniciar.disabled = true;
+            displayElement.style.color = 'black';
+
+            /**
+             * Função executada a cada segundo.
+             */
+            function atualizarContagem() {
+                if (tempoRestante > 0) {
+                    // Exibe o número atual e a palavra "segundos"
+                    displayElement.innerHTML = `**${tempoRestante}** segundos...`;
+                    tempoRestante--; // Decrementa o tempo
+                } else {
+                    // Quando o tempo esgota
+                    clearInterval(intervaloId); // Para o timer
+                    intervaloId = null; // Limpa a referência
+                    
+                    displayElement.style.color = 'red';
+                    displayElement.innerHTML = "<strong>Tempo esgotado!</strong>";
+                    
+                    btnIniciar.disabled = false; // Reabilita o botão
+                }
+            }
+
+            // Chama a função imediatamente para exibir o primeiro valor (N)
+            atualizarContagem();
+
+            // Configura o intervalo para chamar a função a cada 1000 milissegundos (1 segundo)
+            intervaloId = setInterval(atualizarContagem, 1000);
+        }
+    </script>
+
+</body>
+</html>

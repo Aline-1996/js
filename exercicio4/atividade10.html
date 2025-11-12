@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sequência de Sinais Alternados</title>
+</head>
+<body>
+
+    <h1>Sequência de Sinais Alternados (1, -2, 3, -4, ...)</h1>
+    
+    <label for="inputLimite">Limite Máximo (N):</label>
+    <input type="number" id="inputLimite" value="5" min="1"> 
+    
+    <button onclick="gerarSequenciaAlternada()">Gerar Sequência</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Gera uma sequência de números de 1 até N, alternando o sinal.
+         * O sinal é positivo para números ímpares e negativo para números pares.
+         * @param {number} N - O limite máximo da sequência.
+         * @returns {string|string} A sequência de números separados por vírgula ou uma mensagem de erro.
+         */
+        function gerarSequenciaAlternada(N) {
+            
+            // Validação básica
+            if (!Number.isInteger(N) || N < 1) {
+                return "Erro: O limite deve ser um número inteiro positivo.";
+            }
+
+            let sequencia = [];
+            
+            // Loop que itera de 1 até o limite N
+            for (let i = 1; i <= N; i++) {
+                let numeroComSinal;
+
+                // Se o número 'i' for ímpar (i % 2 !== 0), ele deve ser positivo.
+                if (i % 2 !== 0) {
+                    numeroComSinal = i; // Positivo
+                } 
+                // Se o número 'i' for par (i % 2 === 0), ele deve ser negativo.
+                else {
+                    numeroComSinal = -i; // Negativo
+                }
+                
+                sequencia.push(numeroComSinal);
+            }
+            
+            // Retorna a sequência como uma string separada por vírgulas e espaços
+            return sequencia.join(', ');
+        }
+
+        /**
+         * Obtém o limite, gera a sequência e exibe o resultado.
+         */
+        function gerarSequenciaAlternada() {
+            // 1. Pega e converte o valor de entrada
+            const input = document.getElementById('inputLimite').value;
+            const N = parseInt(input);
+            
+            // 2. Gera a sequência
+            const sequencia = gerarSequenciaAlternada(N);
+            
+            // 3. Exibe o resultado
+            const resultadoElement = document.getElementById('resultado');
+            
+            if (sequencia.startsWith('Erro:')) {
+                resultadoElement.style.color = 'red';
+                resultadoElement.textContent = sequencia;
+            } else {
+                resultadoElement.style.color = 'black';
+                resultadoElement.innerHTML = `**Sequência Alternada (N=${N}):** <br> ${sequencia}`;
+            }
+        }
+    </script>
+
+</body>
+</html>

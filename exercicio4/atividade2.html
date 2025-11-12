@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Soma de Quadrados</title>
+</head>
+<body>
+
+    <h1>Soma de Quadrados (1 a N)</h1>
+    
+    <label for="inputLimite">Limite N:</label>
+    <input type="number" id="inputLimite" value="5">
+    
+    <button onclick="calcularEExibir()">Calcular</button>
+    
+    <p id="resultado"></p>
+
+    <script>
+        /**
+         * Calcula a soma dos quadrados de 1 até o limite N.
+         * @param {number} N - O valor limite.
+         * @returns {number|string} O valor da soma ou erro.
+         */
+        function calcularSomaDeQuadrados(N) {
+            
+            // Validação simples
+            if (!Number.isInteger(N) || N <= 0) {
+                return "Erro: Use um número inteiro positivo.";
+            }
+
+            let soma = 0;
+            
+            // Loop de 1 até N, elevando ao quadrado e somando
+            for (let i = 1; i <= N; i++) {
+                soma += i * i;
+            }
+            
+            return soma;
+        }
+
+        /**
+         * Obtém a entrada, calcula e exibe o resultado no elemento <p>.
+         */
+        function calcularEExibir() {
+            // 1. Pega e converte o valor de entrada
+            const input = document.getElementById('inputLimite').value;
+            const N = parseInt(input);
+            
+            // 2. Calcula
+            const resultado = calcularSomaDeQuadrados(N);
+            
+            // 3. Exibe
+            const resultadoElement = document.getElementById('resultado');
+            
+            if (typeof resultado === 'string') {
+                resultadoElement.style.color = 'red';
+                resultadoElement.textContent = resultado;
+            } else {
+                resultadoElement.style.color = 'black';
+                resultadoElement.textContent = `A soma dos quadrados até ${N} é: ${resultado}`;
+            }
+        }
+    </script>
+
+</body>
+</html>

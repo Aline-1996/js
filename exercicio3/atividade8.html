@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Divisibilidade</title>
+</head>
+<body>
+    <script>
+        // 1. Solicita o primeiro número (Dividendo)
+        let entrada1 = prompt("Digite o primeiro número (o Dividendo):");
+        let numero1 = parseFloat(entrada1);
+
+        // 2. Solicita o segundo número (Divisor)
+        let entrada2 = prompt("Digite o segundo número (o Divisor):");
+        let numero2 = parseFloat(entrada2);
+
+        // 3. Verifica se as entradas são números válidos e se o divisor não é zero
+        if (entrada1 === null || entrada2 === null || isNaN(numero1) || isNaN(numero2)) {
+            alert("Entrada inválida. Por favor, digite dois valores numéricos.");
+        } else if (numero2 === 0) {
+            // A divisão por zero é indefinida (erro matemático)
+            alert("Não é possível dividir por zero.");
+        } 
+        else {
+            // 4. Calcula o resto da divisão usando o operador módulo (%)
+            let resto = numero1 % numero2;
+
+            // 5. Verifica se o resto é igual a zero
+            if (resto === 0) {
+                alert(`SIM! O número ${numero1} é DIVISÍVEL por ${numero2}.`);
+            } else {
+                alert(`NÃO. O número ${numero1} NÃO é divisível por ${numero2}. O resto é ${resto}.`);
+            }
+        }
+    </script>
+</body>
+</html>
