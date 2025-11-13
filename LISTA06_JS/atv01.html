@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1: Calculadora de Taxas Bancárias</title>
+</head>
+<body>
+    <script>
+        let saldoInicial = parseFloat(window.prompt("Digite o saldo inicial:"));
+        let meses = 6;
+        let taxa = 0.02;
+        let saldoFinal = saldoInicial;
+        let contador = 1;
+
+        while (contador <= meses) {
+            saldoFinal += saldoFinal * taxa;
+            contador++;
+        }
+        
+        window.alert(`O saldo final após ${meses} meses é: ${saldoFinal.toFixed(2)}`);
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2: Soma de Quadrados</title>
+</head>
+<body>
+    <script>
+        let limite = Number(window.prompt("Digite o limite:"));
+        let soma = 0;
+
+        for (let i = 1; i <= limite; i++) {
+            soma += i * i;
+            //soma += Math.pow(i,2)
+            //soma += i**2
+        }
+
+        window.alert(`A soma dos quadrados de 1 a ${limite} é ${soma}.`);
+    </script>
+</body>
+</html>

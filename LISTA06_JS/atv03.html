@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3: Validador de Senha</title>
+</head>
+<body>
+    <script>
+        let senha = "";
+
+        do {
+            senha = window.prompt("Digite uma senha com pelo menos 8 caracteres:");
+        } while (senha.length < 8);
+        
+        window.alert("Senha válida! Acesso concedido.");
+    </script>
+</body>
+</html>

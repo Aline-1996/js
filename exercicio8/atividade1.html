@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré-visualização de Dados</title>
+</head>
+<body>
+
+    <h1>Pré-visualização da Compra</h1>
+    <p>Preencha os dados e clique no botão para conferir antes de confirmar.</p>
+    <hr>
+
+    <form id="formularioCliente">
+        <label for="nomeCliente">Nome Completo:</label>
+        <input type="text" id="nomeCliente" required><br><br>
+
+        <label for="enderecoCliente">Endereço de Entrega:</label>
+        <input type="text" id="enderecoCliente" required><br><br>
+
+        <button type="button" onclick="exibirDados()">Exibir Dados</button>
+    </form>
+
+    <hr>
+
+    <h2>✅ Dados para Confirmação:</h2>
+    <div id="dadosExibidos">
+        <p>Aguardando dados...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

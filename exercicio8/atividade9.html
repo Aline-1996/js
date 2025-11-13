@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador JavaScript</title>
+    <style>
+        #contador-display {
+            font-size: 3em;
+            margin: 20px 0;
+            font-weight: bold;
+            display: block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        #btnAumentar { background-color: #4CAF50; color: white; }
+        #btnDiminuir { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Contador Simples</h1>
+    
+    <!-- Elemento para exibir o valor atual do contador -->
+    <span id="contador-display">0</span>
+    
+    <button id="btnDiminuir">Diminuir</button>
+    <button id="btnAumentar">Aumentar</button>
+    
+    <script>
+        function simularContador() {
+    // Variável para armazenar o estado atual do contador
+    let contador = 0;
+
+    // 1. Seleciona os elementos do DOM usando getElementById()
+    const display = document.getElementById('contador-display');
+    const btnAumentar = document.getElementById('btnAumentar');
+    const btnDiminuir = document.getElementById('btnDiminuir');
+
+    // Função para atualizar o DOM com o valor atual do contador
+    function atualizarDisplay() {
+        display.textContent = contador;
+    }
+
+    // 2. Adiciona o event listener para o botão Aumentar
+    btnAumentar.addEventListener('click', () => {
+        contador++; // Incrementa a variável
+        atualizarDisplay(); // Atualiza a tela
+    });
+
+    // 3. Adiciona o event listener para o botão Diminuir
+    btnDiminuir.addEventListener('click', () => {
+        contador--; // Decrementa a variável
+        atualizarDisplay(); // Atualiza a tela
+    });
+
+    // Inicializa o display com o valor inicial (0)
+    atualizarDisplay();
+}
+
+// Inicializa a função do contador
+simularContador();
+    </script>
+</body>
+</html>

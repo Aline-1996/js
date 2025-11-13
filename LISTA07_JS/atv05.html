@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5: Tabuada Personalizada</title>
+</head>
+<body>
+    <script>
+        let numero = Number(window.prompt("Digite um número para a tabuada:"));
+        let resultados = "";
+
+        for (let i = 1; i <= 10; i++) {
+            resultados += `${numero} x ${i} = ${numero * i}\n`;
+        }
+
+        window.alert(resultados);
+    </script>
+</body>
+</html>

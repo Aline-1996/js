@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7: Jogo de Adivinhação</title>
+</head>
+<body>
+    <script>
+        let numeroComputador = Math.floor(Math.random() * 10) + 1;
+        let chute = 0;
+        let tentativas = 0;
+
+        do {
+            chute = Number(window.prompt("Tente adivinhar o número (entre 1 e 10):"));
+            tentativas++;
+        } while (chute !== numeroComputador);
+
+        window.alert(`Parabéns! Você acertou em ${tentativas} tentativas.`);
+    </script>
+</body>
+</html>

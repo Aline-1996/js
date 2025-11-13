@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleção de Nível</title>
+</head>
+<body>
+    <h1>Selecione seu Nível de Habilidade:</h1>
+    
+    <label>
+        <input type="radio" name="nivel" value="Iniciante"> Iniciante
+    </label><br>
+    
+    <label>
+        <input type="radio" name="nivel" value="Intermediário"> Intermediário
+    </label><br>
+    
+    <label>
+        <input type="radio" name="nivel" value="Avançado"> Avançado
+    </label><br><br>
+
+    <button id="btnEnviar">Enviar</button>
+    
+    <p id="mensagem"></p>
+    
+    <script>
+      function exibirMensagemNivel() {
+    // 1. Seleciona o botão "Enviar" e o elemento de saída da mensagem.
+    const btnEnviar = document.getElementById('btnEnviar');
+    const mensagemOutput = document.getElementById('mensagem');
+
+    // 2. Adiciona um event listener para o evento 'click' no botão.
+    btnEnviar.addEventListener('click', () => {
+        
+        // 3. Usa getElementsByName() para obter todos os radio buttons com name="nivel".
+        const niveis = document.getElementsByName('nivel');
+
+        let nivelSelecionado = null;
+        
+        // 4. Itera sobre a coleção para encontrar o item selecionado.
+        // O método forEach pode ser usado em NodeList.
+        niveis.forEach((radio) => {
+            if (radio.checked) {
+                // Encontramos o item marcado, salvamos seu valor.
+                nivelSelecionado = radio.value;
+            }
+        });
+
+        // 5. Gera e exibe a mensagem personalizada.
+        if (nivelSelecionado) {
+            let mensagem;
+            
+            switch (nivelSelecionado) {
+                case 'Iniciante':
+                    mensagem = `👋 Você selecionou **${nivelSelecionado}**. Boas-vindas ao básico!`;
+                    break;
+                case 'Intermediário':
+                    mensagem = `👍 Você selecionou **${nivelSelecionado}**. Ótimo, continue evoluindo!`;
+                    break;
+                case 'Avançado':
+                    mensagem = `🚀 Você selecionou **${nivelSelecionado}**. Excelente, está pronto para desafios!`;
+                    break;
+                default:
+                    mensagem = 'Nível selecionado com sucesso!';
+            }
+            
+            mensagemOutput.innerHTML = `<span style="font-weight: bold;">${mensagem}</span>`;
+
+        } else {
+            mensagemOutput.innerHTML = '<span style="color: red;">Por favor, selecione um nível de habilidade.</span>';
+        }
+    });
+}
+
+// Inicializa a função para configurar o botão.
+exibirMensagemNivel();
+    </script>
+</body>
+</html>

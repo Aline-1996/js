@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6: Contagem de Divisores</title>
+</head>
+<body>
+    <script>
+        let numero = Number(window.prompt("Digite um número para contar os divisores:"));
+        let divisores = 0;
+
+        for (let i = 1; i <= numero; i++) {
+            if (numero % i === 0) {
+                divisores++;
+            }
+        }
+        window.alert(`O número ${numero} possui ${divisores} divisores.`);
+    </script>
+</body>
+</html>

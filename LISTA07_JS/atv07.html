@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7: Potência Progressiva</title>
+</head>
+<body>
+    <script>
+        let base = Number(window.prompt("Digite a base:"));
+        let expoente = Number(window.prompt("Digite o expoente máximo:"));
+        let resultados = "";
+
+        for (let i = 1; i <= expoente; i++) {
+            resultados += `${base} ^ ${i} = ${Math.pow(base, i)}\n`;
+        }
+
+        window.alert(resultados);
+    </script>
+</body>
+</html>

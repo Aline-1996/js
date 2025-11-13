@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Validação de Idade</title>
+</head>
+<body>
+    <h1>Validação de Idade</h1>
+    
+    <label for="idade">Idade:</label>
+    <input type="text" id="idade" placeholder="Insira a idade"><br><br>
+    
+    <button id="btnValidar">Validar</button>
+    
+    <p id="resultado">Aguardando validação...</p>
+    
+    <script>
+       function validarIdade() {
+    // 1. Seleciona o botão "Validar" e o elemento de saída de texto.
+    const btnValidar = document.getElementById('btnValidar');
+    const resultado = document.getElementById('resultado');
+
+    // 2. Adiciona o event listener ao botão.
+    btnValidar.addEventListener('click', () => {
+        
+        // 3. Seleciona o campo de entrada "Idade" usando getElementById().
+        const inputIdade = document.getElementById('idade');
+        
+        // 4. Obtém o valor do campo de entrada (que é uma string).
+        const valorIdade = inputIdade.value;
+
+        // 5. Converte o valor para um número. O JavaScript trata strings vazias como 0.
+        const idade = Number(valorIdade);
+
+        // 6. Realiza a lógica de validação.
+        if (valorIdade.trim() === '') {
+            // Verifica se o campo está vazio.
+            resultado.innerHTML = '<span style="color: orange; font-weight: bold;">Por favor, insira um valor.</span>';
+        } else if (isNaN(idade)) {
+            // Verifica se o valor inserido não é um número.
+            resultado.innerHTML = '<span style="color: red; font-weight: bold;">Entrada Inválida: O valor não é um número.</span>';
+        } else if (idade > 0) {
+            // Condição principal: Idade maior que zero.
+            resultado.innerHTML = '<span style="color: green; font-weight: bold;">Validação Válida: A idade é maior que zero.</span>';
+        } else {
+            // Idade é zero ou um número negativo.
+            resultado.innerHTML = '<span style="color: red; font-weight: bold;">Validação Inválida: A idade deve ser maior que zero.</span>';
+        }
+    });
+}
+
+// Inicializa a função para configurar o botão.
+validarIdade();
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4: Contador de Palavras-Chave</title>
+</head>
+<body>
+    <script>
+        let palavra = window.prompt("Digite a palavra que deseja contar:");
+        let texto = window.prompt("Digite o texto:");
+        let contador = 0;
+        let posicao = texto.indexOf(palavra);
+
+        while (posicao !== -1) {
+            contador++;
+            posicao = texto.indexOf(palavra, posicao + 1);
+        }
+        window.alert(`A palavra "${palavra}" aparece ${contador} vezes no texto.`);
+    </script>
+</body>
+</html>

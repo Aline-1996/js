@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocultar Elementos por Classe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilização para o container e as imagens */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .imagem {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s ease-in-out;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4" style="font-family: 'Inter', sans-serif;">
+
+    <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-2xl text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6">Controle de Visibilidade de Imagens</h1>
+
+        <button id="btnOcultar" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300">
+            Ocultar Todas as Imagens
+        </button>
+
+        <p id="feedback" class="mt-4 text-sm text-gray-600">
+            Clique no botão para ocultar todos os elementos marcados com a classe "imagem".
+        </p>
+    </div>
+
+    <!-- Container das Imagens -->
+    <div class="container mt-8" id="image-container">
+        <!-- Todas as imagens possuem a classe 'imagem' -->
+        <img class="imagem" src="imagem/casa-estilo-bauhaus_923558-6501.psd" alt="Imagem 1">
+        <img class="imagem" src="https://placehold.co/150x150/4CAF50/white?text=Img+2" alt="Imagem 2">
+        <img class="imagem" src="https://placehold.co/150x150/FFC107/black?text=Img+3" alt="Imagem 3">
+        <img class="imagem" src="https://placehold.co/150x150/00BCD4/white?text=Img+4" alt="Imagem 4">
+    </div>
+
+    <script>
+        function configurarOcultamento() {
+            // 1. Seleciona o botão de acionamento usando getElementById()
+            const btnOcultar = document.getElementById('btnOcultar');
+            const feedback = document.getElementById('feedback');
+            
+            // 2. Adiciona o listener de clique ao botão
+            btnOcultar.addEventListener('click', () => {
+                
+                // 3. Usa getElementsByClassName() para obter todos os elementos com a classe 'imagem'.
+                // Isso retorna um HTMLCollection.
+                const todasImagens = document.getElementsByClassName('imagem');
+
+                // 4. Itera sobre a coleção de imagens.
+                for (let i = 0; i < todasImagens.length; i++) {
+                    // 5. Altera a propriedade de estilo 'display' para 'none', ocultando o elemento.
+                    todasImagens[i].style.display = 'none';
+                }
+
+                // Feedback visual na interface
+                feedback.innerHTML = '<span class="text-green-600 font-semibold">Todas as imagens foram ocultadas com sucesso!</span>';
+                btnOcultar.textContent = 'Imagens Ocultas';
+                btnOcultar.disabled = true;
+                btnOcultar.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+                btnOcultar.classList.add('bg-gray-400');
+            });
+        }
+
+        // Inicializa a função
+        configurarOcultamento();
+    </script>
+</body>
+</html>

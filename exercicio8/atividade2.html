@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulação DOM - Botões</title>
+</head>
+<body>
+    <h1>Três Botões Coloridos</h1>
+    <button style="background-color: red; color: white;">Botão Vermelho</button>
+    <button style="background-color: green; color: white;">Botão Verde</button>
+    <button style="background-color: blue; color: white;">Botão Azul</button>
+
+    <script>
+    </script>
+<script>
+    function configurarBotoes() {
+    let botoes = document.getElementsByTagName('button');
+
+    for (let i = 0; i < botoes.length; i++) {
+        let botaoAtual = botoes[i];
+
+        botaoAtual.addEventListener('click', function() {
+            this.textContent = 'Clicado';
+            this.style.backgroundColor = 'gray';
+            this.style.color = 'black';
+        });
+    }
+}
+</script>
+</body>
+</html>

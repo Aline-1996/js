@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Parágrafos</title>
+</head>
+<body>
+    <h1>Seções Explicativas</h1>
+    
+    <div id="secao1">
+        <h2>Seção 1</h2>
+        <p>Este é o primeiro parágrafo de exemplo. Ele será alterado.</p>
+        <p>O segundo parágrafo também receberá o novo texto.</p>
+    </div>
+    
+    <div id="secao2">
+        <h2>Seção 2</h2>
+        <p>O terceiro parágrafo demonstra a funcionalidade em outra seção.</p>
+    </div>
+
+    <button id="btnAtualizar">Alterar Todos os Parágrafos</button>
+    
+    <script>
+        function atualizarParagrafos() {
+    // 1. Seleciona o botão de atualização pelo seu ID.
+    const btnAtualizar = document.getElementById('btnAtualizar');
+
+    // 2. Adiciona um event listener para o evento 'click' no botão.
+    btnAtualizar.addEventListener('click', () => {
+        
+        // 3. Usa getElementsByTagName() para obter todos os elementos <p> no documento.
+        // Isso retorna um HTMLCollection.
+        const todosParagrafos = document.getElementsByTagName('p');
+
+        const novoTexto = 'Texto atualizado.';
+        
+        // 4. Itera sobre a HTMLCollection de parágrafos.
+        for (let i = 0; i < todosParagrafos.length; i++) {
+            // 5. Altera o conteúdo de texto de cada parágrafo.
+            // Para garantir que o estilo de todos seja consistente após a mudança:
+            todosParagrafos[i].style.fontStyle = 'italic'; 
+            todosParagrafos[i].textContent = novoTexto;
+        }
+
+        // Opcional: Desabilita o botão após a primeira atualização.
+        btnAtualizar.textContent = 'Atualizado!';
+        btnAtualizar.disabled = true;
+    });
+}
+
+// Inicializa a função para configurar o botão.
+atualizarParagrafos();
+    </script>
+</body>
+</html>

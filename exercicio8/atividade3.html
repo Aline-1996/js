@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Destacar Elementos</title>
+</head>
+<body>
+    <h1>Lista de Alunos</h1>
+
+    <ul>
+        <li class="aluno">João Silva</li>
+        <li class="aluno">Maria Souza</li>
+        <li class="aluno">Pedro Santos</li>
+    </ul>
+
+    <button id="btnDestacar">Destacar</button>
+    
+    <script>
+        function configurarBotoes() {
+    // 1. Seleciona TODOS os elementos <button> no documento.
+    // getElementsByTagName() retorna um HTMLCollection.
+    let botoes = document.getElementsByTagName('button');
+
+    // 2. Itera sobre a coleção de botões para adicionar um evento a cada um.
+    // Nota: É necessário iterar para adicionar o 'listener' a cada elemento individualmente.
+    for (let i = 0; i < botoes.length; i++) {
+        let botaoAtual = botoes[i];
+
+        // 3. Adiciona o manipulador de eventos de clique.
+        botaoAtual.addEventListener('click', function() {
+            // 'this' refere-se ao elemento (botão) que foi clicado.
+
+            // a) Altera o texto do botão clicado para "Clicado".
+            this.textContent = 'Clicado';
+
+            // b) Altera o estilo (cor de fundo) do botão clicado para cinza.
+            this.style.backgroundColor = 'gray';
+
+            // Opcional: Altera a cor do texto para garantir visibilidade.
+            this.style.color = 'black';
+        });
+    }
+}
+
+// Chama a função para configurar os botões assim que o script carregar.
+configurarBotoes();
+    </script>
+</body>
+</html>

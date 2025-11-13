@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar Cores por Classe</title>
+    <style>
+        .itens {
+            padding: 8px;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+            list-style: none;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    
+    <ul>
+        <li class="itens">Comprar pão</li>
+        <li class="itens">Estudar JavaScript</li>
+        <li class="itens">Pagar contas</li>
+        <li class="itens">Fazer exercício</li>
+    </ul>
+
+    <button id="btnColorir">Colorir Itens (Amarelo)</button>
+    
+    <script>
+        function colorirItens() {
+    // 1. Seleciona o botão de colorir pelo seu ID.
+    const btnColorir = document.getElementById('btnColorir');
+
+    // 2. Adiciona um event listener para o evento 'click' no botão.
+    btnColorir.addEventListener('click', () => {
+        
+        // 3. Usa getElementsByClassName() para obter todos os elementos com a classe 'itens'.
+        // Isso retorna um HTMLCollection.
+        const listaItens = document.getElementsByClassName('itens');
+
+        // 4. Itera sobre a HTMLCollection.
+        // O loop for é o método mais robusto para coleções retornadas por getElementsBy*
+        for (let i = 0; i < listaItens.length; i++) {
+            // 5. Altera o estilo (cor de fundo) de cada elemento para amarelo.
+            listaItens[i].style.backgroundColor = 'yellow';
+            
+            // Opcional: Melhora o contraste do texto
+            listaItens[i].style.color = '#333';
+            listaItens[i].style.fontWeight = 'bold';
+        }
+
+        // Opcional: Feedback visual
+        btnColorir.textContent = 'Itens Coloridos!';
+        btnColorir.disabled = true;
+    });
+}
+
+// Inicializa a função para configurar o botão.
+colorirItens();
+    </script>
+</body>
+</html>

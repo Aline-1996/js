@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4: Verificação de Número Primo</title>
+</head>
+<body>
+    <script>
+        let numero = Number(window.prompt("Digite um número para verificar se é primo:"));
+        let ehPrimo = numero > 1;
+
+        for (let i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i === 0) {
+                ehPrimo = false;
+                break;
+            }
+        }
+        
+        window.alert(`O número ${numero} é primo? ${ehPrimo ? "Sim" : "Não"}.`);
+    </script>
+</body>
+</html>

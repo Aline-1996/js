@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9: Soma dos Múltiplos</title>
+</head>
+<body>
+    <script>
+        let numero = Number(window.prompt("Digite o número base:"));
+        let limite = Number(window.prompt("Digite o limite máximo:"));
+        let soma = 0;
+
+        for (let i = numero; i <= limite; i += numero) {
+            soma += i;
+        }
+        window.alert(`A soma dos múltiplos de ${numero} até ${limite} é ${soma}.`);
+    </script>
+</body>
+</html>

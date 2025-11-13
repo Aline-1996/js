@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Seleção de Gênero</title>
+</head>
+<body>
+    <h1>Selecione o Gênero</h1>
+    
+    <label>
+        <input type="radio" name="genero" value="Masculino"> Masculino
+    </label><br>
+    
+    <label>
+        <input type="radio" name="genero" value="Feminino"> Feminino
+    </label><br>
+    
+    <label>
+        <input type="radio" name="genero" value="Outro"> Outro
+    </label><br><br>
+
+    <button id="btnVerificar">Verificar</button>
+    
+    <p id="output">Gênero selecionado: Nenhum</p>
+    
+    <script>
+     function verificarGenero() {
+    // 1. Seleciona o botão "Verificar" e o elemento de saída de texto.
+    const btnVerificar = document.getElementById('btnVerificar');
+    const output = document.getElementById('output');
+
+    // 2. Adiciona um event listener para o evento 'click' no botão.
+    btnVerificar.addEventListener('click', () => {
+        
+        // 3. Usa getElementsByName() para obter todos os radio buttons com name="genero".
+        // Isso retorna um NodeList.
+        const opcoesGenero = document.getElementsByName('genero');
+
+        let generoSelecionado = 'Nenhum gênero foi selecionado.';
+
+        // 4. Itera sobre a NodeList.
+        // O método forEach funciona bem com a NodeList retornada por getElementsByName().
+        opcoesGenero.forEach((radio) => {
+            // 5. Verifica qual radio button está marcado (.checked === true).
+            if (radio.checked) {
+                // Obtém o valor do radio button selecionado.
+                generoSelecionado = radio.value;
+            }
+        });
+
+        // 6. Exibe o resultado na tela (manipulação do DOM).
+        output.innerText = `Gênero selecionado: ${generoSelecionado}`;
+    });
+}
+
+// Inicializa a função para configurar o botão.
+verificarGenero();
+   </script>
+</body>
+</html>
